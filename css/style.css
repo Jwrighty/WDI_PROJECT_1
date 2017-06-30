@@ -1,3 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: PaleGoldenRod ;
+  text-align: center;
+
+}
+
+.character {
+  width: 110px;
+  height: 120px;
+  margin: 0 auto;
+  background: white;
+  float: left;
+}
+
+.character div {
+  height: 40px;
+  border: 1px solid black;
+
+}
+
+.selected {
+  background: red;
+}
+
+.arena {
+  width: 800px;
+  height: 122px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.dagger {
+  width: 50px;
+  height: 40px;
+  border: 1px solid black;
+  float: right;
+  position: relative;
 }
