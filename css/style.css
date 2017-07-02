@@ -9,7 +9,7 @@ body {
 }
 
 .character {
-  width: 110px;
+  width: 100px;
   height: 120px;
   margin: 0 auto;
   background: white;
@@ -31,12 +31,35 @@ body {
   height: 122px;
   border: 1px solid black;
   margin: 0 auto;
+  background-color: black;
 }
 
-.dagger {
+.dagger1 {
   width: 50px;
   height: 40px;
-  border: 1px solid black;
+  /*border: 1px solid white;*/
   float: right;
   position: relative;
+}
+
+.dagger2 {
+  width: 50px;
+  height: 40px;
+  /*border: 1px solid white;*/
+  float: right;
+  clear: right;
+  position: relative;
+}
+
+.dagger3 {
+  width: 50px;
+  height: 40px;
+  /*border: 1px solid white;*/
+  float: right;
+  clear: right;
+  position: relative;
+}
+
+.dagger1 img, .dagger2 img, .dagger3 img{
+  height: 100%;
 }

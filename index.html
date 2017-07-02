@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Project 1</title>
-    <script
+<head>
+  <meta charset="utf-8">
+  <title>Project 1</title>
+  <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous">Dustbin Ninja</script>
-    <script src="js/app.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    <h1>Dustbin Ninja</h1>
-    <div class="arena">
-      <div class="character">
-        <div class="" id="topDiv"></div>
-        <div class="selected" id="midDiv"></div>
-        <div class="" id="botDiv"></div>
-      </div>
-      <div class="dagger">
-
-      </div>
+  <script src="js/app.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Dustbin Ninja</h1>
+  <div class="arena">
+    <div class="character">
+      <div class="" id="topDiv"></div>
+      <div class="selected" id="midDiv"></div>
+      <div class="" id="botDiv"></div>
     </div>
-    <button type="button" name="button">Start Game</button>
-
-  </body>
+    <div class="dagger1">
+      <img src="/Users/Jason/Development/WDI_PROJECT_1/images/Shuriken.png" alt="">
+    </div>
+    <div class="dagger2">
+      <img src="/Users/Jason/Development/WDI_PROJECT_1/images/Shuriken.png" alt="">
+    </div>
+    <div class="dagger3">
+      <img src="/Users/Jason/Development/WDI_PROJECT_1/images/Shuriken.png" alt="">
+    </div>
+  </div>
+  <button type="button" name="button">Start Game</button>
+  <p><span></span></p>
+</body>
 </html>
 
 <!--
@@ -32,7 +38,7 @@ create container div with 3 divs inside, assign one with the class of 'selected'
 set size and position of container div
 assign color to div with class of selected
 map so that up and down key moves the class 'selected' between the divs
-  down key moves to next div up key moves to previous div
+down key moves to next div up key moves to previous div
 
 create new container dive
 use the .animate property to get an object to move from right of screen to the left
@@ -43,10 +49,13 @@ work out collision event with character div using outer width / outer height
 succesful collision +1 to score variable
 unsuccesful collions log game over
 
+trigger throw, creates a new div inserts it in a random one of the 3 divs for high/med/low and runs animation
+
+
 set three animations - 1 high 1 middle 1 low
 set interval between each animation event
 randomise which animation runs
 
 have interval between animation events reduce based on the score variable - i.e when score = 10 reduce interval by xxx
 
- -->
+-->
