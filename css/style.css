@@ -2,41 +2,52 @@
   box-sizing: border-box;
 }
 
-body {
-  background: PaleGoldenRod ;
-  text-align: center;
+h1 {
+  color: white;
+}
 
+body {
+  background: url('https://s-media-cache-ak0.pinimg.com/originals/d4/f4/44/d4f4446eec7e530e612f30f10db39d77.jpg') ;
+  background-size: cover;
+  text-align: center;
 }
 
 .character {
-  width: 100px;
-  height: 120px;
+  width: 150px;
+  height: 200px;
   margin: 0 auto;
-  background: white;
+  background-image: url('https://upload.wikimedia.org/wikipedia/en/1/10/Winniethepooh.png');
+  background-size: contain;
   float: left;
 }
 
 .character div {
-  height: 40px;
-  border: 1px solid black;
+  height: 50px;
+
+  /*border: 1px solid black;*/
+
 
 }
 
 .selected {
   background: red;
+  /*background-image: url('https://cdn.pixabay.com/photo/2014/03/24/17/15/fly-swatter-295234_960_720.png');
+  /*background-size: cover;*/
 }
 
 .arena {
   width: 800px;
-  height: 122px;
-  border: 1px solid black;
-  margin: 0 auto;
-  background-color: black;
+  height: 152px;
+  /*border: 1px solid black;*/
+  /*margin: 300px auto 0;*/
+  margin-left: 300px;
+  margin-top: 400px;
+  /*background-color: black;*/
 }
 
 .dagger1 {
   width: 50px;
-  height: 40px;
+  height: 50px;
   /*border: 1px solid white;*/
   float: right;
   position: relative;
@@ -44,22 +55,26 @@ body {
 
 .dagger2 {
   width: 50px;
-  height: 40px;
+  height: 50px;
   /*border: 1px solid white;*/
   float: right;
-  clear: right;
   position: relative;
 }
 
 .dagger3 {
   width: 50px;
-  height: 40px;
+  height: 50px;
   /*border: 1px solid white;*/
   float: right;
-  clear: right;
   position: relative;
 }
 
 .dagger1 img, .dagger2 img, .dagger3 img{
   height: 100%;
+}
+
+.dagger1path, .dagger2path, .dagger3path {
+  height: 50px;
+  /*border: 1px solid white;*/
+
 }

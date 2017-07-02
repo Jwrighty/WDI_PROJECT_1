@@ -49,22 +49,47 @@ function init(){
 
   $('button').on('click', startGame);
 
-  const $daggerArray = [throwDagger1, throwDagger2, throwDagger3];
+  const $daggerArray = ['dagger1', 'dagger2', 'dagger3'];
+  // [throwDagger1, throwDagger2, throwDagger3];
 
-  // at interval (set with a variable that can ge changed) run a random throwDagger function (using math.random and selecting from the dagger array)
+  function randomFrom($daggerArray) {
+    return $daggerArray[Math.floor(Math.random() * 3)];
+  }
+
+  // CREATE A NEW DAGGER
+  // create a function assign to varialbe newDagger
+  // insert a new div into arena
+  // insert image into div
+  // apply class of either .dagger1 / .dagger2 / .dagger3
+  // create an array of .dagger1 / .dagger2 / .dagger3
+  // add the math.random of this array as the class of the newly created div
+  // pass this new dagger into the animate function
+
+  // creates a dagger by inserting div and applying a random class from $daggerArray
+  function createDagger() {
+    const $arrayValue = randomFrom($daggerArray);
+    if ($arrayValue === 'dagger1') {
+      // var newDagger1 = document.createElement('div');
+      // $(newDagger1).attr('class', 'dagger1');
+      // throwDagger1(newDagger1);
+      $('dagger1path').append('<div class="dagger1"><img src="/Users/Jason/Development/WDI_PROJECT_1/images/Shuriken.png" alt=""></div>');
+      throwDagger1();
+    } else if ($arrayValue === 'dagger2') {
+      $('dagger2path').append('<div class="dagger2"><img src="/Users/Jason/Development/WDI_PROJECT_1/images/Shuriken.png" alt=""></div>');
+      throwDagger2();
+    } else {
+      $('dagger3path').append('<div class="dagger3"><img src="/Users/Jason/Development/WDI_PROJECT_1/images/Shuriken.png" alt=""></div>');
+      throwDagger3();
+    }
+  }
 
   function startGame () {
-
-    $daggerArray[Math.floor((Math.random() * 3))]();
-    //insert new element, fire animation, clear
-
-
     let speed = 3000;
-
     let interval = setInterval(runI, speed);
 
     function runI() {
-      $daggerArray[Math.floor((Math.random() * 3))]();
+      $playerState = 'alive';
+      createDagger();
       speed -= 50;
       clearInterval(interval);
       interval = setInterval(runI, speed);
@@ -78,33 +103,13 @@ function init(){
         $('p span').text('You are Dead!');
       }
     }
-
-
   }
-  //
-  //   function startGame() {
-  //     let i = 0;
-  //
-  //     const interval = setInterval(function () {
-  //       console.log(i);
-  //       console.log($score);
-  //       $daggerArray[Math.floor((Math.random() * 3))]();
-  //       i++;
-  //       checkIValue();
-  //     }, 2000);
-  //
-  //
-  //     function checkIValue() {
-  //       if (i>=10) { // if gameState = dead
-  //         clearInterval(interval);
-  //         console.log('the end'); // insert html text to say you're dead
-  //       }
-  //     }
-  //   }
 
 
+
+  // THROW EACH DAGGER FUNCTIONS
   function throwDagger1() {
-    $dagger1.animate({right: '695px'}, 1500, function() {
+    $dagger1.animate({right: '700px'}, 2000, function() {
       $dagger1.removeAttr('style');
       if ($topDiv.hasClass('selected')) {
         $score++;
@@ -120,7 +125,7 @@ function init(){
   }
 
   function throwDagger2() {
-    $dagger2.animate({right: '700px'}, 1500, function() {
+    $dagger2.animate({right: '700px'}, 2000, function() {
       $dagger2.removeAttr('style');
       if ($midDiv.hasClass('selected')) {
         $score++;
@@ -136,7 +141,7 @@ function init(){
   }
 
   function throwDagger3() {
-    $dagger3.animate({right: '700px'}, 1500, function() {
+    $dagger3.animate({right: '700px'}, 2000, function() {
       $dagger3.removeAttr('style');
       if ($botDiv.hasClass('selected')) {
         $score++;
@@ -152,11 +157,18 @@ function init(){
   }
 }
 
-// CREATE A NEW DAGGER
-// create a function
-// insert a new div into arena
-// insert image into div
-// apply class of either .dagger1 / .dagger2 / .dagger3
-  // create an array of .dagger1 / .dagger2 / .dagger3
-  // add the math.random of this array as the class of the newly created div
-// pass this new dagger into the animate function
+// function throwDagger() {
+//   $dagger1.animate({right: '695px'}, 1500, function() {
+//     $dagger1.removeAttr('style');
+//     if ($topDiv.hasClass('selected')) {
+//       $score++;
+//       console.log($score);
+//       $playerState = 'alive';
+//     } else {
+//       $playerState = 'dead';
+//       console.log($score);
+//       console.log($playerState);
+//       $score = 0;
+//     }
+//   });
+// }
