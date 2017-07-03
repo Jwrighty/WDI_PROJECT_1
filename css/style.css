@@ -8,79 +8,101 @@ h1 {
 
 p {
   color: white;
+  font-size: 20px;
 }
 
 body {
-background-color: black;
+  background-color: black;
   text-align: center;
+}
+
+header {
+  margin: 0px auto;
+  background-color: #4C0000;
+  border: 2px solid white;
+  /*display: inline-block;*/
+  width: 500px;
+}
+
+main {
+  background-image: url('/Users/Jason/Development/WDI_PROJECT_1/images/animated-gifs-of-fighting-game-backgrounds-50.gif');
+  background-size: cover;
+  margin: 0 auto;
+  width: 950px;
+  height: 600px;
+
+}
+
+.arena {
+  width: 900px;
+  height: 152px;
+  /*border: 1px solid black;*/
+  margin: auto;
+  /*margin-left: 300px;*/
+  margin-top: 150px;
+  /*background-color: white;*/
+  position: relative;
 }
 
 .character {
   width: 150px;
   height: 150px;
   margin: 0 auto;
-  background-color: white;
+  background-image: url('/Users/Jason/Development/WDI_PROJECT_1/images/karate_char_stand.png');
+  /*background-size: cover;*/
   float: left;
 }
 
 .character div {
   height: 50px;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
 }
 
 .selected {
-  background: rgba(255, 0, 0, 0.5);
-}
-
-.arena {
-  width: 800px;
-  height: 152px;
-  border: 1px solid black;
-  margin: auto;
-  /*margin-left: 300px;*/
-  margin-top: 100px;
-  background-color: white;
-  position: relative;
+  /*background: rgba(255, 0, 0, 0.5);*/
 }
 
 .pathTop, .pathMid, .pathBot {
-  height: 50px;
-  border: 1px solid black ;
+  height: 40px;
+  margin-top: 7px;
+  /*border: 1px solid black ;*/
+  overflow: hidden;
 }
 
 .daggerStyle {
-  width: 50px;
-  height: 50px;
-  background-color: red;
+  width: 40px;
+  height: 40px;
+  /*background-color: white;*/
+  background-image: url('https://openclipart.org/image/2400px/svg_to_png/258397/Water-And-Air-Yin-Yang.png');
+  background-size: cover;
   position: absolute;
   right: 0;
-  opacity: 0.5;
+  -webkit-animation:spin 2s linear infinite;
+  -moz-animation:spin 2s linear infinite;
+  animation:spin 2s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+button {
+  background-color: #009898;
+  border: none;
+  color: white;
+  padding: 20px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: 2px solid white;
 }
 
-/*.dagger1 {
-  width: 50px;
-  height: 50px;
-  border: 1px solid white;
-  float: right;
-  position: relative;
+button:hover {
+  background-color: white;
+  border: 2px solid #009898;
+  color: black;
 }
-
-.dagger2 {
-  width: 50px;
-  height: 50px;
-  border: 1px solid white;
-  float: right;
-  position: relative;
-}
-
-.dagger3 {
-  width: 50px;
-  height: 50px;
-  border: 1px solid white;
-  float: right;
-  position: relative;
-}*/
-/*
-.dagger1 img, .dagger2 img, .dagger3 img{
-  height: 100%;
-}*/

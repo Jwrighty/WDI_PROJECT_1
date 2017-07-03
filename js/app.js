@@ -16,16 +16,24 @@ function init(){
   function selectTop() {
     $('.character').children().removeClass();
     $topDiv.attr('class', 'selected');
+    $('.character').css('background', 'url(/Users/Jason/Development/WDI_PROJECT_1/images/karate_char_high.png) no-repeat');
   }
 
   function selectMid() {
     $('.character').children().removeClass();
     $midDiv.attr('class', 'selected');
+    $('.character').css('background', 'url(/Users/Jason/Development/WDI_PROJECT_1/images/karate_char_mid.png) no-repeat');
   }
 
   function selectBottom() {
     $('.character').children().removeClass();
     $botDiv.attr('class', 'selected');
+    $('.character').css('background', 'url(/Users/Jason/Development/WDI_PROJECT_1/images/karate_char_low.png) no-repeat');
+  }
+
+  function returnStance() {
+    $('.character').css('background', 'url(/Users/Jason/Development/WDI_PROJECT_1/images/karate_char_stand.png) no-repeat');
+    $('.character').children().removeClass();
   }
 
   $(document).keydown(function(e) {
@@ -47,10 +55,28 @@ function init(){
     e.preventDefault(); // prevent the default action (scroll / move caret)
   });
 
+  $(document).keyup(function(e) {
+    switch(e.which) {
+      case 37: returnStance();
+      break;
+
+      case 38: returnStance();
+      break;
+
+      case 39: returnStance();
+      break;
+
+      case 40: returnStance();
+      break;
+
+      default: return;
+    }
+    e.preventDefault(); // prevent the default action (scroll / move caret)
+  });
+
   $('button').on('click', startGame);
 
   const $daggerArray = ['.pathTop', '.pathMid', '.pathBot'];
-  // [throwDagger1, throwDagger2, throwDagger3];
 
   function randomFrom($daggerArray) {
     return $daggerArray[Math.floor(Math.random() * 3)];
@@ -58,15 +84,49 @@ function init(){
 
   function createDagger() {
     const $lane = randomFrom($daggerArray);
-    // $($lane).append('<div></div>').addClass('daggerStyle');
     $('.dagger').clone().attr('class', 'daggerStyle').appendTo($lane);
-    moveDagger();
+    moveDagger($lane);
   }
 
-  function moveDagger() {
+  function moveDagger($lane) {
     const $movingDagger = $('.daggerStyle');
-    $movingDagger.animate({right: '700px'}, 2500, function() {
+    $movingDagger.animate({right: '740px'}, 2500, 'linear', function() {
       $movingDagger.remove();
+      console.log($lane);
+      if ($lane === '.pathTop') {
+        if ($topDiv.hasClass('selected')) {
+          $score++;
+          $('p span').text($score);
+          console.log($score);
+          $playerState = 'alive';
+        } else {
+          $playerState = 'dead';
+          console.log($score);
+          console.log($playerState);
+        }
+      } else if ($lane === '.pathMid') {
+        if ($midDiv.hasClass('selected')){
+          $score++;
+          $('p span').text($score);
+          console.log($score);
+          $playerState = 'alive';
+        } else {
+          $playerState = 'dead';
+          console.log($score);
+          console.log($playerState);
+        }
+      } else {
+        if ($botDiv.hasClass('selected')){
+          $score++;
+          $('p span').text($score);
+          console.log($score);
+          $playerState = 'alive';
+        } else {
+          $playerState = 'dead';
+          console.log($score);
+          console.log($playerState);
+        }
+      }
     });
   }
 
