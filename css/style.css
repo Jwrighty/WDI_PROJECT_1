@@ -6,49 +6,61 @@ h1 {
   color: white;
 }
 
+p {
+  color: white;
+}
+
 body {
-  background: url('https://s-media-cache-ak0.pinimg.com/originals/d4/f4/44/d4f4446eec7e530e612f30f10db39d77.jpg') ;
-  background-size: cover;
+background-color: black;
   text-align: center;
 }
 
 .character {
   width: 150px;
-  height: 200px;
+  height: 150px;
   margin: 0 auto;
-  background-image: url('https://upload.wikimedia.org/wikipedia/en/1/10/Winniethepooh.png');
-  background-size: contain;
+  background-color: white;
   float: left;
 }
 
 .character div {
   height: 50px;
-
-  /*border: 1px solid black;*/
-
-
+  border: 1px solid black;
 }
 
 .selected {
-  background: red;
-  /*background-image: url('https://cdn.pixabay.com/photo/2014/03/24/17/15/fly-swatter-295234_960_720.png');
-  /*background-size: cover;*/
+  background: rgba(255, 0, 0, 0.5);
 }
 
 .arena {
   width: 800px;
   height: 152px;
-  /*border: 1px solid black;*/
-  /*margin: 300px auto 0;*/
-  margin-left: 300px;
-  margin-top: 400px;
-  /*background-color: black;*/
+  border: 1px solid black;
+  margin: auto;
+  /*margin-left: 300px;*/
+  margin-top: 100px;
+  background-color: white;
+  position: relative;
 }
 
-.dagger1 {
+.pathTop, .pathMid, .pathBot {
+  height: 50px;
+  border: 1px solid black ;
+}
+
+.daggerStyle {
   width: 50px;
   height: 50px;
-  /*border: 1px solid white;*/
+  background-color: red;
+  position: absolute;
+  right: 0;
+  opacity: 0.5;
+}
+
+/*.dagger1 {
+  width: 50px;
+  height: 50px;
+  border: 1px solid white;
   float: right;
   position: relative;
 }
@@ -56,7 +68,7 @@ body {
 .dagger2 {
   width: 50px;
   height: 50px;
-  /*border: 1px solid white;*/
+  border: 1px solid white;
   float: right;
   position: relative;
 }
@@ -64,17 +76,11 @@ body {
 .dagger3 {
   width: 50px;
   height: 50px;
-  /*border: 1px solid white;*/
+  border: 1px solid white;
   float: right;
   position: relative;
-}
-
+}*/
+/*
 .dagger1 img, .dagger2 img, .dagger3 img{
   height: 100%;
-}
-
-.dagger1path, .dagger2path, .dagger3path {
-  height: 50px;
-  /*border: 1px solid white;*/
-
-}
+}*/
