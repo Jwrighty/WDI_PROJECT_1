@@ -2,15 +2,13 @@ $(init);
 
 function init(){
 
-  const $currentSelected = $('.selected');
   const $topDiv = $('#topDiv');
   const $midDiv = $('#midDiv');
   const $botDiv = $('#botDiv');
-  const $dagger1 = $('.dagger1');
-  const $dagger2 = $('.dagger2');
-  const $dagger3 = $('.dagger3');
-  let $playerState = 'alive';
+  let $playerState =  'alive';
   let $score = 0;
+  const $daggerArray = ['.pathTop', '.pathMid', '.pathBot'];
+
 
   // Keyboard arrows to move the character div class
   function selectTop() {
@@ -36,6 +34,12 @@ function init(){
     $('.character').children().removeClass();
   }
 
+  function gameOver() {
+    $('.character').css('background', 'url(/Users/Jason/Development/WDI_PROJECT_1/images/karate_char_dead.png)');
+    $('button').text('Try Again?');
+  }
+
+  // TRIGGERS THE MOVE CLASS FUNCTIONS ON KEY PRESS
   $(document).keydown(function(e) {
     switch(e.which) {
       case 37: selectMid();
@@ -55,6 +59,7 @@ function init(){
     e.preventDefault(); // prevent the default action (scroll / move caret)
   });
 
+  // RESETS THE CHARACTER STANCE ON KEYUP
   $(document).keyup(function(e) {
     switch(e.which) {
       case 37: returnStance();
@@ -74,82 +79,113 @@ function init(){
     e.preventDefault(); // prevent the default action (scroll / move caret)
   });
 
+  // START THE GAME
   $('button').on('click', startGame);
 
-  const $daggerArray = ['.pathTop', '.pathMid', '.pathBot'];
-
+  // SELECT A RANDOM PATH
   function randomFrom($daggerArray) {
     return $daggerArray[Math.floor(Math.random() * 3)];
   }
 
+  // CLONES A NEW ELEMENT AND INSERTS INTO RANDOM LANE, FIRES ANIMATION
   function createDagger() {
     const $lane = randomFrom($daggerArray);
     $('.dagger').clone().attr('class', 'daggerStyle').appendTo($lane);
     moveDagger($lane);
   }
 
+  // ANIMATION
   function moveDagger($lane) {
     const $movingDagger = $('.daggerStyle');
-    $movingDagger.animate({right: '740px'}, 2500, 'linear', function() {
+    const $flyTime = Math.floor(Math.random() * ((2000-1500)+1) + 1500);
+    $movingDagger.animate({right: '740px'}, $flyTime, 'linear', function() {
       $movingDagger.remove();
+      checkCollision($lane);
       console.log($lane);
-      if ($lane === '.pathTop') {
-        if ($topDiv.hasClass('selected')) {
-          $score++;
-          $('p span').text($score);
-          console.log($score);
-          $playerState = 'alive';
-        } else {
-          $playerState = 'dead';
-          console.log($score);
-          console.log($playerState);
-        }
-      } else if ($lane === '.pathMid') {
-        if ($midDiv.hasClass('selected')){
-          $score++;
-          $('p span').text($score);
-          console.log($score);
-          $playerState = 'alive';
-        } else {
-          $playerState = 'dead';
-          console.log($score);
-          console.log($playerState);
-        }
-      } else {
-        if ($botDiv.hasClass('selected')){
-          $score++;
-          $('p span').text($score);
-          console.log($score);
-          $playerState = 'alive';
-        } else {
-          $playerState = 'dead';
-          console.log($score);
-          console.log($playerState);
-        }
-      }
     });
+  }
+  // CHECK IF PLAYER SELECTED THE CORRECT LANE
+  function checkCollision($lane) {
+    if ($lane === '.pathTop') {
+      if ($topDiv.hasClass('selected') && $playerState === 'alive') {
+        $score++;
+        $('p span').text($score);
+        $playerState = 'alive';
+      } else {
+        $playerState = 'dead';
+        gameOver();
+      }
+    } else if ($lane === '.pathMid') {
+      if ($midDiv.hasClass('selected') && $playerState === 'alive'){
+        $score++;
+        $('p span').text($score);
+        $playerState = 'alive';
+      } else {
+        $playerState = 'dead';
+        gameOver();
+      }
+    } else {
+      if ($botDiv.hasClass('selected') && $playerState === 'alive'){
+        $score++;
+        $('p span').text($score);
+        $playerState = 'alive';
+      } else {
+        $playerState = 'dead';
+        gameOver();
+      }
+    }
   }
 
   function startGame () {
+    reset();
     $('p span').text($score);
+    $('button').text('Go!');
+
     let speed = 2000;
     let interval = setInterval(runI, speed);
 
+    function getSpeed() {
+      if ($score <=5 ){
+        return speed =  1800;
+      } else if ($score <=15){
+        return speed = 1400;
+      } else if ($score <= 25) {
+        return speed = 1000;
+      } else if ($score <= 35) {
+        return speed = 600;
+      } else if ($score <= 50) {
+        return speed = 500;
+      } else if ($score <= 60) {
+        return speed = 400;
+      }
+    }
+
     function runI() {
       createDagger();
-      speed -= 50;
+      getSpeed();
+      console.log(speed);
       clearInterval(interval);
       interval = setInterval(runI, speed);
       checkIValue();
     }
+
     function checkIValue() {
       if ($playerState === 'dead') {
         clearInterval(interval);
-        console.log('the end');
+        // console.log('the end');
       }
     }
   }
+
+  function reset() {
+    $playerState = 'alive';
+    $score = 0;
+    returnStance();
+  }
 }
+
+
+
 
 
 
