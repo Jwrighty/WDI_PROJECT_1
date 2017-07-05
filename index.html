@@ -13,20 +13,28 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
   <main>
+
     <header>
       <h1>Kickback Kungfu</h1>
     </header>
-    <p class="score">Score = <span></span></p>
+    <p class="score">Score = <span> </span></p>
     <div class="instructions">
-    <p>Instructions: </p>
-    <ul>
-      <li>Use keyboard arrow keys to block incoming objects</li>
-      <li><img src="/Users/Jason/Development/WDI_PROJECT_1/images/up_key.png" alt=""> Use up arrow to jump up and block bombs on the top line</li>
-    </ul>
+      <!-- <p>Instructions: </p> -->
+      <ul>
+        <li><h2>Instructions</h2></li>
+        <li>Use keyboard arrow keys to block bombs.</li>
+        <li>
+          <img  src="/Users/Jason/Development/WDI_PROJECT_1/images/left_key.png" alt="">
+          <img src="/Users/Jason/Development/WDI_PROJECT_1/images/up_key.png" alt="">
+          <img src="/Users/Jason/Development/WDI_PROJECT_1/images/right_key.png" alt=""><img src="/Users/Jason/Development/WDI_PROJECT_1/images/down_key.png" alt="">
+        </li>
+      </ul>
     </div>
 
     <button type="button" name="button">Start Game</button>
+
     <section>
       <div class="arena">
         <div class="character">
@@ -49,6 +57,8 @@
         </div>
       </div>
     </section>
+    <div class="overlay">
+    </div>
   </main>
 </body>
 </html>

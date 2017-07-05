@@ -4,13 +4,18 @@
 
 .score {
   background-color: rgba(76,9,9,1);
-
   border: 2px solid black;
   color: white;
   padding: 20px 20px;
   width: 200px;
   text-align: left;
   float: right;
+  margin: 20px;
+  font-family: 'Shojumaru', cursive;
+}
+
+.score p span {
+  color: green;
 }
 
 .instructions {
@@ -27,10 +32,10 @@
   width: 20px;
 }
 
-p {
-  margin: 20px;
-  color: white;
-  font-size: 20px;
+
+li {
+  font-size: 12px;
+  padding: 4px;
 }
 
 body {
@@ -43,15 +48,18 @@ header {
   background-color: #4C0000;
   border: 2px solid black;
   display: inline-block;
-  padding: 20px 20px;;
+  padding: 20px;
 }
 
 h1 {
   font-family: 'Shojumaru', cursive;
-  font-size: 30px;
+  font-size: 35px;
   color: white;
 }
 
+h2 {
+  font-size: 18px;
+}
 main {
   background-image: url('/Users/Jason/Development/WDI_PROJECT_1/images/animated-gifs-of-fighting-game-backgrounds-50.gif');
   background-size: cover;
@@ -59,6 +67,8 @@ main {
   margin: 0 auto;
   width: 950px;
   height: 600px;
+  overflow: hidden;
+  position: relative;
 }
 
 .arena {
@@ -66,7 +76,7 @@ main {
   height: 152px;
   /*border: 1px solid white;*/
   margin: 0 auto;
-  margin-top: 120px;
+  margin-top: 100px;
   position: relative;
 }
 
@@ -92,12 +102,13 @@ main {
   width: 940px;
   margin-top: 20px;
   margin-left: -30px;
+  /*overflow: hidden;*/
   /*border: 1px solid white ;*/
 }
 
 .daggerStyle {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   margin-top: 10px;
   /*background-color: white;*/
   background-image: url('/Users/Jason/Development/WDI_PROJECT_1/images/computer-8-bit-graphic-bomb-icon.png');
@@ -113,8 +124,8 @@ main {
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 .daggerStyle2 {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   margin-top: 10px;
   background-image: url('/Users/Jason/Development/WDI_PROJECT_1/images/computer-8-bit-graphic-bomb-icon.png');
   background-size: cover;
@@ -130,26 +141,31 @@ main {
 
 button {
   background-color: #009898;
+  height: 100px;
+  width: 250px;
   border: none;
   color: white;
-  padding: 30px 60px;
+  /*padding: 30px 60px;*/
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  font-family: 'Shojumaru', cursive;
   margin: 110px 20px 0;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
   border: 2px solid white;
-
+  position: relative;
+  z-index: 1;
 }
 
 button:hover {
   background-color: white;
   border: 2px solid #009898;
-  color: black;
+  color: #4C0000;
 }
+
 
 .keyboard {
   width: 40px;
@@ -177,4 +193,15 @@ button:hover {
 
 #down_key2 {
   float: right;
+}
+
+.overlay {
+  width: 950px;
+  height: 600px;
+  margin: 0 auto;
+  background-color: rgba(76,9,9,0.8);
+  z-index: 0;
+  display: none;
+  position: absolute;
+  top: 0;
 }

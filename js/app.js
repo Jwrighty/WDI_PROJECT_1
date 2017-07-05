@@ -12,6 +12,8 @@ function init(){
   let speed = 2000;
   let gameInterval = null;
   let counter = 0;
+  const $overlay = $('.overlay');
+
 
 
   // Keyboard arrows to move the character div class
@@ -45,9 +47,12 @@ function init(){
 
   function gameOver() {
     clearInterval(gameInterval);
-    $('.daggerStyle, .daggerStyle2').stop().remove();
+    $overlay.delay(200).fadeIn(1000);
     $('.character').css('background', 'url(/Users/Jason/Development/WDI_PROJECT_1/images/karate_char_dead.png)');
-    $('button').text('Try Again?');
+    $('button').html('You scored: ' + $score +  ' </br>Go again?');
+    $('button').animate({ opacity: 1 }, function(){
+      $('button').css('visibility', 'visible');
+    });
   }
 
   // TRIGGERS THE MOVE CLASS FUNCTIONS ON KEY PRESS
@@ -124,6 +129,11 @@ function init(){
     const $flyTime = Math.floor(Math.random() * ((2000-1500)+1) + 1500);
     $bomb.animate({right: '370px'}, {
       duration: $flyTime,
+      step: function() {
+        if ($playerState === 'dead') {
+          $bomb.stop().animate({right: '980px'}, 4000);
+        }
+      },
       easing: 'linear',
       done: function() {
         $(this).css('background-image', 'url(/Users/Jason/Development/WDI_PROJECT_1/images/explosion.gif)');
@@ -139,6 +149,11 @@ function init(){
     const $flyTime = Math.floor(Math.random() * ((2000-1500)+1) + 1500);
     $bomb.animate({left: '350px'}, {
       duration: $flyTime,
+      step: function() {
+        if ($playerState === 'dead') {
+          $bomb.stop().animate({left: '980px'}, 4000);
+        }
+      },
       easing: 'linear',
       done: function() {
         $(this).css('background-image', 'url(/Users/Jason/Development/WDI_PROJECT_1/images/explosion.gif)');
@@ -195,7 +210,14 @@ function init(){
   }
 
   function startGame () {
+    $overlay.delay(200).fadeOut(1000);
     reset();
+    $('button').animate({ opacity: 0 }, 1000, function(){
+      $('button').css('visibility', 'hidden');
+    });
+    $('.instructions').animate({ opacity: 0 }, 1500, function(){
+      $('.instructions').css('visibility', 'hidden');
+    });
     $('p span').text($score);
     $('button').text('Go!');
     gameInterval = setInterval(runI, speed);
