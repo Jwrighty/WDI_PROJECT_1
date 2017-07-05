@@ -7,7 +7,11 @@ function init(){
   const $botDiv = $('#botDiv');
   let $playerState =  'alive';
   let $score = 0;
-  const $daggerArray = ['.pathTop', '.pathMid', '.pathBot'];
+  const $laneArray = ['.pathTop', '.pathMid', '.pathBot'];
+  const $styleArray = ['daggerStyle', 'daggerStyle2'];
+  let speed = 2000;
+  let gameInterval = null;
+  let counter = 0;
 
 
   // Keyboard arrows to move the character div class
@@ -17,10 +21,15 @@ function init(){
     $('.character').css('background', 'url(/Users/Jason/Development/WDI_PROJECT_1/images/karate_char_high.png) no-repeat');
   }
 
-  function selectMid() {
+  function selectMidRight() {
     $('.character').children().removeClass();
     $midDiv.attr('class', 'selected');
     $('.character').css('background', 'url(/Users/Jason/Development/WDI_PROJECT_1/images/karate_char_mid.png) no-repeat');
+  }
+  function selectMidLeft() {
+    $('.character').children().removeClass();
+    $midDiv.attr('class', 'selected');
+    $('.character').css('background', 'url(/Users/Jason/Development/WDI_PROJECT_1/images/karate_char_left.png) no-repeat');
   }
 
   function selectBottom() {
@@ -35,6 +44,8 @@ function init(){
   }
 
   function gameOver() {
+    clearInterval(gameInterval);
+    $('.daggerStyle, .daggerStyle2').stop().remove();
     $('.character').css('background', 'url(/Users/Jason/Development/WDI_PROJECT_1/images/karate_char_dead.png)');
     $('button').text('Try Again?');
   }
@@ -42,18 +53,22 @@ function init(){
   // TRIGGERS THE MOVE CLASS FUNCTIONS ON KEY PRESS
   $(document).keydown(function(e) {
     switch(e.which) {
-      case 37: selectMid();
+      case 37: if ($playerState === 'alive') {
+        selectMidLeft();
+      }
       break;
-
-      case 38: selectTop();
+      case 38: if ($playerState === 'alive') {
+        selectTop();
+      }
       break;
-
-      case 39: selectMid();
+      case 39: if ($playerState === 'alive') {
+        selectMidRight();
+      }
       break;
-
-      case 40: selectBottom();
+      case 40: if ($playerState === 'alive') {
+        selectBottom();
+      }
       break;
-
       default: return;
     }
     e.preventDefault(); // prevent the default action (scroll / move caret)
@@ -62,18 +77,22 @@ function init(){
   // RESETS THE CHARACTER STANCE ON KEYUP
   $(document).keyup(function(e) {
     switch(e.which) {
-      case 37: returnStance();
+      case 37: if ($playerState === 'alive') {
+        returnStance();
+      }
       break;
-
-      case 38: returnStance();
+      case 38: if ($playerState === 'alive') {
+        returnStance();
+      }
       break;
-
-      case 39: returnStance();
+      case 39: if ($playerState === 'alive') {
+        returnStance();
+      }
       break;
-
-      case 40: returnStance();
+      case 40: if ($playerState === 'alive') {
+        returnStance();
+      }
       break;
-
       default: return;
     }
     e.preventDefault(); // prevent the default action (scroll / move caret)
@@ -83,29 +102,65 @@ function init(){
   $('button').on('click', startGame);
 
   // SELECT A RANDOM PATH
-  function randomFrom($daggerArray) {
-    return $daggerArray[Math.floor(Math.random() * 3)];
+  function randomFrom(array) {
+    return array[Math.floor(Math.random() * (array.length))];
   }
 
   // CLONES A NEW ELEMENT AND INSERTS INTO RANDOM LANE, FIRES ANIMATION
-  function createDagger() {
-    const $lane = randomFrom($daggerArray);
-    $('.dagger').clone().attr('class', 'daggerStyle').appendTo($lane);
-    moveDagger($lane);
+  function createObject() {
+    const $lane = randomFrom($laneArray);
+    const $styleChoice = randomFrom($styleArray);
+    // console.log($styleChoice);
+    const $bomb = $('.dagger').clone().attr('class', $styleChoice).appendTo($lane);
+    if ($bomb.hasClass('daggerStyle')) {
+      moveObjectRight($lane, $bomb);
+    } else {
+      moveObjectLeft($lane, $bomb);
+    }
   }
 
   // ANIMATION
-  function moveDagger($lane) {
-    const $movingDagger = $('.daggerStyle');
+  function moveObjectRight($lane, $bomb) {
     const $flyTime = Math.floor(Math.random() * ((2000-1500)+1) + 1500);
-    $movingDagger.animate({right: '740px'}, $flyTime, 'linear', function() {
-      $movingDagger.remove();
-      checkCollision($lane);
-      console.log($lane);
+    $bomb.animate({right: '370px'}, {
+      duration: $flyTime,
+      easing: 'linear',
+      done: function() {
+        $(this).css('background-image', 'url(/Users/Jason/Development/WDI_PROJECT_1/images/explosion.gif)');
+        checkCollision($lane);
+        setTimeout(function() {
+          $bomb.remove();
+        }, 300);
+      }
     });
   }
+
+  function moveObjectLeft($lane, $bomb) {
+    const $flyTime = Math.floor(Math.random() * ((2000-1500)+1) + 1500);
+    $bomb.animate({left: '350px'}, {
+      duration: $flyTime,
+      easing: 'linear',
+      done: function() {
+        $(this).css('background-image', 'url(/Users/Jason/Development/WDI_PROJECT_1/images/explosion.gif)');
+        checkCollision($lane);
+        setTimeout(function() {
+          $bomb.remove();
+        }, 300);
+      }
+    });
+  }
+
+  // function blowUpBomb(element, movingObject, lane) {
+  //   $(element).css('background-image', 'url(/Users/Jason/Development/WDI_PROJECT_1/images/explosion.gif)');
+  //   checkCollision(lane);
+  //   setTimeout(function() {
+  //     movingObject.remove();
+  //   }, 100);
+  // }
+
   // CHECK IF PLAYER SELECTED THE CORRECT LANE
   function checkCollision($lane) {
+    console.log('collision');
     if ($lane === '.pathTop') {
       if ($topDiv.hasClass('selected') && $playerState === 'alive') {
         $score++;
@@ -113,6 +168,7 @@ function init(){
         $playerState = 'alive';
       } else {
         $playerState = 'dead';
+        console.log('dead top');
         gameOver();
       }
     } else if ($lane === '.pathMid') {
@@ -122,6 +178,7 @@ function init(){
         $playerState = 'alive';
       } else {
         $playerState = 'dead';
+        console.log('dead middle');
         gameOver();
       }
     } else {
@@ -131,6 +188,7 @@ function init(){
         $playerState = 'alive';
       } else {
         $playerState = 'dead';
+        console.log('dead bottom');
         gameOver();
       }
     }
@@ -140,9 +198,14 @@ function init(){
     reset();
     $('p span').text($score);
     $('button').text('Go!');
-
-    let speed = 2000;
-    let interval = setInterval(runI, speed);
+    gameInterval = setInterval(runI, speed);
+    function runI() {
+      createObject();
+      getSpeed();
+      clearInterval(gameInterval);
+      gameInterval = setInterval(runI, speed);
+      // checkIValue();
+    }
 
     function getSpeed() {
       if ($score <=5 ){
@@ -152,29 +215,19 @@ function init(){
       } else if ($score <= 25) {
         return speed = 1000;
       } else if ($score <= 35) {
-        return speed = 600;
+        return speed = 800;
       } else if ($score <= 50) {
-        return speed = 500;
+        return speed = 650;
       } else if ($score <= 60) {
-        return speed = 400;
+        return speed = 500;
       }
     }
 
-    function runI() {
-      createDagger();
-      getSpeed();
-      console.log(speed);
-      clearInterval(interval);
-      interval = setInterval(runI, speed);
-      checkIValue();
-    }
-
-    function checkIValue() {
-      if ($playerState === 'dead') {
-        clearInterval(interval);
-        // console.log('the end');
-      }
-    }
+    // function checkIValue() {
+    //   if ($playerState === 'dead') {
+    //     clearInterval(gameInterval);
+    //   }
+    // }
   }
 
   function reset() {
@@ -183,117 +236,3 @@ function init(){
     returnStance();
   }
 }
-
-
-
-
-
-
-// CREATE A NEW DAGGER
-// create a function assign to varialbe newDagger
-// insert a new div into arena
-// insert image into div
-// apply class of either .dagger1 / .dagger2 / .dagger3
-// create an array of .dagger1 / .dagger2 / .dagger3
-// add the math.random of this array as the class of the newly created div
-// pass this new dagger into the animate function
-
-// creates a dagger by inserting div and applying a random class from $daggerArray
-
-
-// function createDagger() {
-//   const $arrayValue = randomFrom($daggerArray);
-//   if ($arrayValue === 'pathTop') {
-//     // var newDagger1 = document.createElement('div');
-//     // $(newDagger1).attr('class', 'dagger1');
-//     // throwDagger1(newDagger1);
-//     $('dagger1path').append('<div class="dagger1"><img src="/Users/Jason/Development/WDI_PROJECT_1/images/Shuriken.png" alt=""></div>');
-//     throwDagger1();
-//   } else if ($arrayValue === 'pathMid') {
-//     $('dagger2path').append('<div class="dagger2"><img src="/Users/Jason/Development/WDI_PROJECT_1/images/Shuriken.png" alt=""></div>');
-//     throwDagger2();
-//   } else {
-//     $('dagger3path').append('<div class="dagger3"><img src="/Users/Jason/Development/WDI_PROJECT_1/images/Shuriken.png" alt=""></div>');
-//     throwDagger3();
-//   }
-// }
-
-
-
-// THROW EACH DAGGER FUNCTIONS
-// function throwDagger1() {
-//   $dagger1.animate({right: '700px'}, 2000, function() {
-//     $dagger1.removeAttr('style');
-//     if ($topDiv.hasClass('selected')) {
-//       $score++;
-//       $('p span').text($score);
-//       console.log($score);
-//       $playerState = 'alive';
-//     } else {
-//       $playerState = 'dead';
-//       console.log($score);
-//       console.log($playerState);
-//
-//     }
-//   });
-// }
-//
-// function throwDagger2() {
-//   $dagger2.animate({right: '700px'}, 2000, function() {
-//     $dagger2.removeAttr('style');
-//     if ($midDiv.hasClass('selected')) {
-//       $score++;
-//       $('p span').text($score);
-//       console.log($score);
-//       $playerState = 'alive';
-//     } else {
-//       $playerState = 'dead';
-//       console.log($score);
-//       console.log($playerState);
-//       $score = 0;
-//     }
-//   });
-// }
-//
-// function throwDagger3() {
-//   $dagger3.animate({right: '700px'}, 2000, function() {
-//     $dagger3.removeAttr('style');
-//     if ($botDiv.hasClass('selected')) {
-//       $score++;
-//       $('p span').text($score);
-//       console.log($score);
-//       $playerState = 'alive';
-//     } else {
-//       $playerState = 'dead';
-//       console.log($score);
-//       console.log($playerState);
-//       $score = 0;
-//     }
-//   });
-// }
-
-
-// function throwDagger() {
-//   $dagger1.animate({right: '695px'}, 1500, function() {
-//     $dagger1.removeAttr('style');
-//     if ($topDiv.hasClass('selected')) {
-//       $score++;
-//       console.log($score);
-//       $playerState = 'alive';
-//     } else {
-//       $playerState = 'dead';
-//       console.log($score);
-//       console.log($playerState);
-//       $score = 0;
-//     }
-//   });
-// }
-//
-
-// function createDagger() {
-//   const $arrayValue = randomFrom($daggerArray);
-//   if ($arrayValue === 'pathTop') {
-//     // var newDagger1 = document.createElement('div');
-//     // $(newDagger1).attr('class', 'dagger1');
-//     // throwDagger1(newDagger1);
-//     $('dagger1path').append('<div class="dagger1"><img src="/Users/Jason/Development/WDI_PROJECT_1/images/Shuriken.png" alt=""></div>');

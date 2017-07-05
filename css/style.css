@@ -2,11 +2,33 @@
   box-sizing: border-box;
 }
 
-h1 {
+.score {
+  background-color: rgba(76,9,9,1);
+
+  border: 2px solid black;
   color: white;
+  padding: 20px 20px;
+  width: 200px;
+  text-align: left;
+  float: right;
+}
+
+.instructions {
+  background-color: rgba(76,9,9,0.8);
+  border: 2px solid black;
+  margin: 20px;
+  padding: 10px;
+  color: white;
+  width: 200px;
+  float: left;
+}
+
+.instructions img {
+  width: 20px;
 }
 
 p {
+  margin: 20px;
   color: white;
   font-size: 20px;
 }
@@ -17,45 +39,48 @@ body {
 }
 
 header {
-  margin: 0px auto;
+  margin: 20px auto 0;
   background-color: #4C0000;
-  border: 2px solid white;
-  /*display: inline-block;*/
-  width: 500px;
+  border: 2px solid black;
+  display: inline-block;
+  padding: 20px 20px;;
+}
+
+h1 {
+  font-family: 'Shojumaru', cursive;
+  font-size: 30px;
+  color: white;
 }
 
 main {
   background-image: url('/Users/Jason/Development/WDI_PROJECT_1/images/animated-gifs-of-fighting-game-backgrounds-50.gif');
   background-size: cover;
+  background-color: grey;
   margin: 0 auto;
   width: 950px;
   height: 600px;
-
 }
 
 .arena {
-  width: 900px;
+  width: 880px;
   height: 152px;
-  /*border: 1px solid black;*/
-  margin: auto;
-  /*margin-left: 300px;*/
-  margin-top: 150px;
-  /*background-color: white;*/
+  /*border: 1px solid white;*/
+  margin: 0 auto;
+  margin-top: 120px;
   position: relative;
 }
 
 .character {
   width: 150px;
-  height: 150px;
-  margin: 0 auto;
   background-image: url('/Users/Jason/Development/WDI_PROJECT_1/images/karate_char_stand.png');
-  /*background-size: cover;*/
-  float: left;
+  background-size: cover;
+  position: absolute;
+  right: 375px;
 }
 
 .character div {
   height: 50px;
-  /*border: 1px solid black;*/
+  /*border: 1px solid red;*/
 }
 
 .selected {
@@ -63,23 +88,41 @@ main {
 }
 
 .pathTop, .pathMid, .pathBot {
-  height: 40px;
-  margin-top: 7px;
-  /*border: 1px solid black ;*/
-  overflow: hidden;
+  height: 30px;
+  width: 940px;
+  margin-top: 20px;
+  margin-left: -30px;
+  /*border: 1px solid white ;*/
 }
 
 .daggerStyle {
   width: 40px;
   height: 40px;
+  margin-top: 10px;
   /*background-color: white;*/
-  background-image: url('https://openclipart.org/image/2400px/svg_to_png/258397/Water-And-Air-Yin-Yang.png');
+  background-image: url('/Users/Jason/Development/WDI_PROJECT_1/images/computer-8-bit-graphic-bomb-icon.png');
   background-size: cover;
   position: absolute;
   right: 0;
   -webkit-animation:spin 2s linear infinite;
   -moz-animation:spin 2s linear infinite;
-  animation:spin 2s linear infinite;
+  animation:spin 1s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.daggerStyle2 {
+  width: 40px;
+  height: 40px;
+  margin-top: 10px;
+  background-image: url('/Users/Jason/Development/WDI_PROJECT_1/images/computer-8-bit-graphic-bomb-icon.png');
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  -webkit-animation:spin 2s linear infinite;
+  -moz-animation:spin 2s linear infinite;
+  animation:spin 1s linear infinite;
 }
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
@@ -89,20 +132,49 @@ button {
   background-color: #009898;
   border: none;
   color: white;
-  padding: 20px 40px;
+  padding: 30px 60px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 110px 20px 0;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
   border: 2px solid white;
+
 }
 
 button:hover {
   background-color: white;
   border: 2px solid #009898;
   color: black;
+}
+
+.keyboard {
+  width: 40px;
+  margin-top: 5px;
+}
+#up_key1 {
+  float: left;
+}
+
+#up_key2 {
+  float: right;
+}
+
+#left_key {
+  float: left;
+}
+
+#right_key {
+  float: right;
+}
+
+#down_key1 {
+  float: left;
+}
+
+#down_key2 {
+  float: right;
 }

@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>Project 1</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link href="https://fonts.googleapis.com/css?family=Shojumaru" rel="stylesheet">
   <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -13,10 +15,17 @@
 <body>
   <main>
     <header>
-      <h1>Kickback and Kungfu</h1>
+      <h1>Kickback Kungfu</h1>
     </header>
-    <p id="score">Score = <span></span></p>
+    <p class="score">Score = <span></span></p>
+    <div class="instructions">
     <p>Instructions: </p>
+    <ul>
+      <li>Use keyboard arrow keys to block incoming objects</li>
+      <li><img src="/Users/Jason/Development/WDI_PROJECT_1/images/up_key.png" alt=""> Use up arrow to jump up and block bombs on the top line</li>
+    </ul>
+    </div>
+
     <button type="button" name="button">Start Game</button>
     <section>
       <div class="arena">
@@ -26,9 +35,18 @@
           <div class="" id="botDiv"></div>
         </div>
         <div class="dagger"></div>
-        <div class="pathTop"></div>
-        <div class="pathMid"></div>
-        <div class="pathBot"></div>
+        <div class="pathTop">
+          <img class="keyboard" id="up_key1" src="/Users/Jason/Development/WDI_PROJECT_1/images/up_key.png" alt="">
+          <img class="keyboard" id="up_key2" src="/Users/Jason/Development/WDI_PROJECT_1/images/up_key.png" alt="">
+        </div>
+        <div class="pathMid">
+          <img class="keyboard" id="left_key" src="/Users/Jason/Development/WDI_PROJECT_1/images/left_key.png" alt="">
+          <img class="keyboard" id="right_key" src="/Users/Jason/Development/WDI_PROJECT_1/images/right_key.png" alt="">
+        </div>
+        <div class="pathBot">
+          <img class="keyboard" id="down_key1" src="/Users/Jason/Development/WDI_PROJECT_1/images/down_key.png" alt="">
+          <img class="keyboard" id="down_key2" src="/Users/Jason/Development/WDI_PROJECT_1/images/down_key.png" alt="">
+        </div>
       </div>
     </section>
   </main>
