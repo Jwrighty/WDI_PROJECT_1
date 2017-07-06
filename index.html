@@ -19,9 +19,7 @@
     <header>
       <h1>Kickback Kungfu</h1>
     </header>
-    <p class="score">Score = <span> </span></p>
     <div class="instructions">
-      <!-- <p>Instructions: </p> -->
       <ul>
         <li><h2>Instructions</h2></li>
         <li>Use keyboard arrow keys to block bombs.</li>
@@ -32,8 +30,14 @@
         </li>
       </ul>
     </div>
+    <p class="highScore">High Score = <span> </span></p>
+    <p class="score">Current Score = <span> </span></p>
 
-    <button type="button" name="button">Start Game</button>
+    <div class="CB">
+      <button type="button" class="start-button" name="button">
+        Start Game
+      </button>
+    </div>
 
     <section>
       <div class="arena">
@@ -42,7 +46,7 @@
           <div class="selected" id="midDiv"></div>
           <div class="" id="botDiv"></div>
         </div>
-        <div class="dagger"></div>
+        <div class="bomb"></div>
         <div class="pathTop">
           <img class="keyboard" id="up_key1" src="/Users/Jason/Development/WDI_PROJECT_1/images/up_key.png" alt="">
           <img class="keyboard" id="up_key2" src="/Users/Jason/Development/WDI_PROJECT_1/images/up_key.png" alt="">

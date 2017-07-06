@@ -2,16 +2,47 @@
   box-sizing: border-box;
 }
 
-.score {
-  background-color: rgba(76,9,9,1);
+main {
+  background-image: url('/Users/Jason/Development/WDI_PROJECT_1/images/animated-gifs-of-fighting-game-backgrounds-50.gif');
+  background-size: cover;
+  background-color: grey;
+  margin: 0 auto;
+  width: 950px;
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+}
+
+header {
+  margin: 20px auto 0;
+  background-color: #4C0000;
+  border: 2px solid black;
+  padding: 20px;
+  clear: both;
+}
+
+.score, .highScore {
+  background-color: rgba(76,9,9,0.8);
   border: 2px solid black;
   color: white;
   padding: 20px 20px;
   width: 200px;
   text-align: left;
-  float: right;
-  margin: 20px;
+  /*margin: 20px;*/
+  margin: 20px 0px 0px 20px;;
+  /*margin-top: 20px;*/
   font-family: 'Shojumaru', cursive;
+  font-size: 10px;
+}
+
+.highScore {
+  display: block;
+  /*margin-bottom: 20px;*/
+}
+
+.score {
+  float: left;
+  display: inline-block;
 }
 
 .score p span {
@@ -24,14 +55,42 @@
   margin: 20px;
   padding: 10px;
   color: white;
-  width: 200px;
-  float: left;
+  float: right;
 }
 
 .instructions img {
   width: 20px;
 }
 
+button {
+  background-color: #009898;
+  height: 100px;
+  width: 250px;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: 'Shojumaru', cursive;
+  margin: 40px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: 2px solid white;
+  position: relative;
+  z-index: 1;
+  /*left: 13%;*/
+}
+
+button:hover {
+  background-color: white;
+  border: 2px solid #009898;
+  color: #4C0000;
+}
+.CB{
+  margin: 0 auto;
+  width: 40%;
+}
 
 li {
   font-size: 12px;
@@ -43,41 +102,29 @@ body {
   text-align: center;
 }
 
-header {
-  margin: 20px auto 0;
-  background-color: #4C0000;
-  border: 2px solid black;
-  display: inline-block;
-  padding: 20px;
-}
-
 h1 {
   font-family: 'Shojumaru', cursive;
-  font-size: 35px;
+  font-size: 45px;
   color: white;
 }
 
 h2 {
   font-size: 18px;
 }
-main {
-  background-image: url('/Users/Jason/Development/WDI_PROJECT_1/images/animated-gifs-of-fighting-game-backgrounds-50.gif');
-  background-size: cover;
-  background-color: grey;
-  margin: 0 auto;
-  width: 950px;
-  height: 600px;
-  overflow: hidden;
-  position: relative;
-}
 
 .arena {
   width: 880px;
   height: 152px;
-  /*border: 1px solid white;*/
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 30px;
   position: relative;
+}
+
+.pathTop, .pathMid, .pathBot {
+  height: 30px;
+  width: 940px;
+  margin-top: 20px;
+  margin-left: -30px;
 }
 
 .character {
@@ -93,20 +140,7 @@ main {
   /*border: 1px solid red;*/
 }
 
-.selected {
-  /*background: rgba(255, 0, 0, 0.5);*/
-}
-
-.pathTop, .pathMid, .pathBot {
-  height: 30px;
-  width: 940px;
-  margin-top: 20px;
-  margin-left: -30px;
-  /*overflow: hidden;*/
-  /*border: 1px solid white ;*/
-}
-
-.daggerStyle {
+.bombRight {
   width: 50px;
   height: 50px;
   margin-top: 10px;
@@ -123,7 +157,7 @@ main {
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
-.daggerStyle2 {
+.bombLeft {
   width: 50px;
   height: 50px;
   margin-top: 10px;
@@ -138,34 +172,6 @@ main {
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
-
-button {
-  background-color: #009898;
-  height: 100px;
-  width: 250px;
-  border: none;
-  color: white;
-  /*padding: 30px 60px;*/
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  font-family: 'Shojumaru', cursive;
-  margin: 110px 20px 0;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  cursor: pointer;
-  border: 2px solid white;
-  position: relative;
-  z-index: 1;
-}
-
-button:hover {
-  background-color: white;
-  border: 2px solid #009898;
-  color: #4C0000;
-}
-
 
 .keyboard {
   width: 40px;
