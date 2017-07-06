@@ -4,29 +4,29 @@ var kungfu = kungfu || {};
 kungfu.selectTop = function selectTop() {
   this.$character.children().removeClass();
   this.$topDiv.attr('class', 'selected');
-  this.$character.css('background', 'url(./images/karate_char_high.png) no-repeat');
+  this.$character.css('background', 'url("./images/karate_char_high.png") no-repeat');
 };
 
 kungfu.selectMidRight = function selectMidRight() {
   this.$character.children().removeClass();
   this.$midDiv.attr('class', 'selected');
-  this.$character.css('background', 'url(./images/karate_char_mid.png) no-repeat');
+  this.$character.css('background', 'url("./images/karate_char_mid.png") no-repeat');
 };
 
 kungfu.selectMidLeft = function selectMidLeft() {
   this.$character.children().removeClass();
   this.$midDiv.attr('class', 'selected');
-  this.$character.css('background', 'url(./images/karate_char_left.png) no-repeat');
+  this.$character.css('background', 'url("./images/karate_char_left.png") no-repeat');
 };
 
 kungfu.selectBottom = function selectBottom() {
   this.$character.children().removeClass();
   this.$botDiv.attr('class', 'selected');
-  this.$character.css('background', 'url(./images/karate_char_low.png) no-repeat');
+  this.$character.css('background', 'url("./images/karate_char_low.png") no-repeat');
 };
 
 kungfu.returnStance = function returnStance() {
-  this.$character.css('background', 'url(./images/karate_char_stand.png) no-repeat');
+  this.$character.css('background', 'url("./images/karate_char_stand.png") no-repeat');
   this.$character.children().removeClass();
 };
 
@@ -106,7 +106,7 @@ kungfu.gameOver = function gameOver() {
   clearInterval(this.gameInterval);
   this.setHighScore();
   this.$overlay.delay(200).fadeIn(1000);
-  this.$character.css('background', 'url(./images/karate_char_dead.png)');
+  this.$character.css('background', 'url("./images/karate_char_dead.png")');
   this.$button.html('You scored: ' + this.$score +  ' </br>Go again?');
   this.$button.animate({ opacity: 1 }, function(){
     $(this.$button).css('visibility', 'visible');
@@ -161,7 +161,7 @@ kungfu.moveObject = function moveObject($lane, $bomb, deadDirection, direction) 
     },
     easing: 'linear',
     done: function() {
-      $(this).css('background-image', 'url(./images/explosion.gif)');
+      $(this).css('background-image', 'url("./images/explosion.gif")');
       kungfu.checkCollision($lane);
       setTimeout(function() {
         $bomb.remove();
