@@ -130,7 +130,7 @@ h2 {
 
 .character {
   width: 150px;
-  background-image: url('/Users/Jason/Development/WDI_PROJECT_1/images/karate_char_stand.png');
+  background-image: url('./images/karate_char_stand.png');
   background-size: cover;
   position: absolute;
   right: 375px;
@@ -146,7 +146,7 @@ h2 {
   height: 50px;
   margin-top: 10px;
   /*background-color: white;*/
-  background-image: url('/Users/Jason/Development/WDI_PROJECT_1/images/computer-8-bit-graphic-bomb-icon.png');
+  background-image: url('./images/computer-8-bit-graphic-bomb-icon.png');
   background-size: cover;
   position: absolute;
   right: 0;
