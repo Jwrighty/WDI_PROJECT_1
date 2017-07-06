@@ -162,7 +162,7 @@ h2 {
   width: 50px;
   height: 50px;
   margin-top: 10px;
-  background-image: url('/Users/Jason/Development/WDI_PROJECT_1/images/computer-8-bit-graphic-bomb-icon.png');
+  background-image: url('./images/computer-8-bit-graphic-bomb-icon.png');
   background-size: cover;
   position: absolute;
   left: 0;
