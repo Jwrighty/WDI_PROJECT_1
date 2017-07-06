@@ -3,7 +3,7 @@
 }
 
 main {
-  background-image: url('/Users/Jason/Development/WDI_PROJECT_1/images/animated-gifs-of-fighting-game-backgrounds-50.gif');
+  background-image: url('./images/animated-gifs-of-fighting-game-backgrounds-50.gif');
   background-size: cover;
   background-color: grey;
   margin: 0 auto;
