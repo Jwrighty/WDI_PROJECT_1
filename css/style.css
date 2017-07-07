@@ -3,7 +3,7 @@
 }
 
 main {
-  background-image: url('./images/animated-gifs-of-fighting-game-backgrounds-50.gif');
+  background-image: url(http://i.imgur.com/peVYLOC.gif);
   background-size: cover;
   background-color: grey;
   margin: 0 auto;
@@ -130,7 +130,7 @@ h2 {
 
 .character {
   width: 150px;
-  background-image: url('./images/karate_char_stand.png');
+  background-image: url(http://i.imgur.com/NNCiN0S.png);
   background-size: cover;
   position: absolute;
   right: 375px;
@@ -146,7 +146,7 @@ h2 {
   height: 50px;
   margin-top: 10px;
   /*background-color: white;*/
-  background-image: url('./images/computer-8-bit-graphic-bomb-icon.png');
+  background-image: url(http://i.imgur.com/dFwuHsP.png);
   background-size: cover;
   position: absolute;
   right: 0;
@@ -162,7 +162,7 @@ h2 {
   width: 50px;
   height: 50px;
   margin-top: 10px;
-  background-image: url('./images/computer-8-bit-graphic-bomb-icon.png');
+  background-image: url(http://i.imgur.com/dFwuHsP.png);
   background-size: cover;
   position: absolute;
   left: 0;
