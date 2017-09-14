@@ -6,6 +6,7 @@ This was my first project on week 3 of the web development immersive course at G
 # The Game
 The idea for the chosen game came from an old Amiga game that i used to play as a child called 'IK+'. Within that there was a mini game where a character in the middle of the screen had to deflect bouncing balls that came in from either side of the screen. The bounce height and movement speed are randomised with the number entering the screen increasing over time. I set out to replicate this, minus the bouncing animations.
 
+![](/Users/Jason/Desktop/Screen Shot 2017-09-14 at 16.22.28.png)
 # Steps
 * Pseudo code to think about necessary steps
 * Layout using divs and borders the character and game area
