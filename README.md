@@ -1,13 +1,19 @@
-# WDI - PROJECT - 1 - Kickback KungFu 
+# WDI - PROJECT - 1 - Kickback KungFu
+Heroku: [https://fierce-spire-75470.herokuapp.com/]() 
 
 # Intro & Brief
 This was my first project on week 3 of the web development immersive course at General Assembly. The brief was to make a game using what HTML, CSS and Javascript we had learnt in the first two weeks of the course. I defined 4 potential game ideas (the others being; a clicker/idle game, connect4 or a piano memory game) and was recommended to tackle the most complex.
 
 # The Game
+
 The idea for the chosen game came from an old Amiga game that i used to play as a child called 'IK+'. Within that there was a mini game where a character in the middle of the screen had to deflect bouncing balls that came in from either side of the screen. The bounce height and movement speed are randomised with the number entering the screen increasing over time. I set out to replicate this, minus the bouncing animations.
 
-![](/Users/Jason/Desktop/Screen Shot 2017-09-14 at 16.22.28.png)
-# Steps
+![](https://i.imgur.com/WvNc3co.jpg)
+
+This was a great project and was particularly enjoyable for the freedom it gave to explore different concepts and to really grasp JavaScript, jQuery and CSS concepts.
+
+
+# Key Steps
 * Pseudo code to think about necessary steps
 * Layout using divs and borders the character and game area
 * Began with character on the left of the screen and worked on animating a single html object from the right, triggered by a button click.
@@ -19,15 +25,14 @@ The idea for the chosen game came from an old Amiga game that i used to play as 
 * Removed the on click button to trigger each object and used set interval to execute the create and animate functions. 
 * Created a gameover state for when the collision failed. 
 * Created a reset function
-* 
+* Added in character images, editing in Photoshop beforehand
+* Added in collision sounds
+* Created a score tracker
+* Stored high score in local storage so it persists through refresh
+* Added styling and adjusted layouts
 
 
-# Challenges
-
-CSS
-
-# Key Learnings
-* tried to take a functional approach which really helped
 
 # Potential next steps
+Improve the animations and intervals, add levels with different styling/themes, add sprite frames to the character to animate. 
 
