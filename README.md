@@ -1,6 +1,8 @@
 # WDI - PROJECT - 1 - Kickback KungFu
 Heroku: [https://fierce-spire-75470.herokuapp.com/]() 
 
+**Skills** : JavaScript, jQuery, HTML, CSS3
+
 # Intro & Brief
 This was my first project on week 3 of the web development immersive course at General Assembly. The brief was to make a game using what HTML, CSS and Javascript we had learnt in the first two weeks of the course. I defined 4 potential game ideas (the others being; a clicker/idle game, connect4 or a piano memory game) and was recommended to tackle the most complex.
 
