@@ -1,5 +1,5 @@
 # WDI - PROJECT - 1 - Kickback KungFu
-Heroku: [https://fierce-spire-75470.herokuapp.com/]() 
+[Heroku](https://fierce-spire-75470.herokuapp.com/) 
 
 **Skills** : JavaScript, jQuery, HTML, CSS3
 
